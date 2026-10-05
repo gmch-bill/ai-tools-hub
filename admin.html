@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Tools Hub — Admin</title><link rel="stylesheet" href="admin.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script></head>
+<body>
+<div class="wrap">
+  <header><strong>AI Tools Hub Admin</strong><button id="logout" class="secondary hidden">Logout</button></header>
+
+  <section id="login-card" class="card">
+    <h1>Admin Login</h1><p class="muted">Use your Supabase Auth email and password.</p>
+    <input id="email" type="email" placeholder="Admin email"><input id="password" type="password" placeholder="Password">
+    <button id="login" class="primary">Login</button><p id="login-msg" class="msg"></p>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="tabs"><button data-tab="tools" class="tab active">Tools</button><button data-tab="ads" class="tab">Ads Manager</button></div>
+
+    <div id="tools-tab" class="tab-panel">
+      <div class="card">
+        <h2>Add / Edit Tool</h2>
+        <input type="hidden" id="tool-id">
+        <input id="tool-name" placeholder="Tool name">
+        <select id="tool-category"><option>Image</option><option>Video</option><option>Writing</option><option>Voice</option><option>Productivity</option><option>Other</option></select>
+        <textarea id="tool-description" placeholder="Short description"></textarea>
+        <input id="tool-image" placeholder="Image URL">
+        <input id="tool-url" placeholder="Destination / affiliate URL">
+        <input id="tool-button" placeholder="Button text" value="Check Tool →">
+        <label><input type="checkbox" id="tool-featured"> Featured</label>
+        <label><input type="checkbox" id="tool-published" checked> Published</label>
+        <div><button id="save-tool" class="primary">Save Tool</button><button id="clear-tool" class="secondary">Clear</button></div>
+      </div>
+      <div class="card"><h2>Tools</h2><div id="tools-list"></div></div>
+    </div>
+
+    <div id="ads-tab" class="tab-panel hidden">
+      <div class="card">
+        <h2>Adsterra Ads Manager</h2>
+        <p class="muted">Paste the ad code supplied by Adsterra. Only trusted admins should have access to this panel.</p>
+        <input type="hidden" id="ad-id">
+        <input id="ad-name" placeholder="Ad name">
+        <select id="ad-type"><option>Banner</option><option>Pop-under</option><option>Social Bar</option><option>Direct Link</option><option>Other</option></select>
+        <select id="ad-placement"><option value="top">Top</option><option value="middle">Between tools</option><option value="bottom">Bottom</option></select>
+        <textarea id="ad-code" class="code" placeholder="Paste Adsterra ad code here"></textarea>
+        <label><input type="checkbox" id="ad-mobile" checked> Mobile</label>
+        <label><input type="checkbox" id="ad-desktop" checked> Desktop</label>
+        <label><input type="checkbox" id="ad-enabled" checked> Active</label>
+        <div><button id="save-ad" class="primary">Save Ad</button><button id="clear-ad" class="secondary">Clear</button></div>
+      </div>
+      <div class="card"><h2>Ads</h2><div id="ads-list"></div></div>
+    </div>
+  </section>
+</div>
+<script src="admin.js"></script>
+</body></html>
